@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Edit Page";
+
+}
+@model GssZenicaApp.ViewModels.AddEquipmentViewModel
+<div id="createEquipment">
+    <form asp-controller="Equipment" asp-action="Create" class="form-horizontal" method="post" enctype="multipart/form-data">
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-5 control-label">Datum kupovine: </label>
+                    <div class="col-md-9">
+                        <input asp-for="DateOfPurchase" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-5 control-label">Kupljeno u: </label>
+                    <div class="col-md-9">
+                        <input asp-for="LocationOfPurchase" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-5 control-label">Cijena: </label>
+                    <div class="col-md-9">
+                        <input asp-for="Price" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-5 control-label">Količina: </label>
+                    <div class="col-md-9">
+                        <input asp-for="Quantity" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-5 control-label">Opis: </label>
+                    <div class="col-md-9">
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-5 control-label">Kupio: </label>
+                    <div class="col-md-9">
+                        <select asp-for="MemberPurchasedId" class="form-control" asp-items="@Model.MemberList">
+                            <option value="" selected disabled>--  Odaberite clana koji je kupio  --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-5 control-label">Izaberite kategoriju: </label>
+                    <div class="col-md-9">
+                        <span class="input-group">
+                            <select asp-for="EquipmentCategoryId" class="form-control" asp-items="@Model.EquipmentCategoryList">
+                                <option value="" selected disabled>--  Odaberite kategoriju --</option>
+                            </select>&nbsp;
+                            <a onclick="showInPopup('@Url.Action("Create","EquipmentCategory",new { isEquipmentView=true },Context.Request.Scheme)','Dodaj kategoriju')"
+                               class="btn btn-primary"><i class="fa fa-plus-circle text-primary"></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-5 control-label">Upload račun: </label>
+                    <div class="col-md-9">
+                        <input asp-for="ImageFile" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-success" value="Snimi" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

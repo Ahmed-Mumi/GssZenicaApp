@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GssZenicaApp.ViewModels.ListEquipmentCategoryViewModel>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">
+                <a onclick="showInPopup('@Url.Action("Create","EquipmentCategory",null,Context.Request.Scheme)','Dodaj kategoriju')"
+                   class="btn btn-primary">Dodaj</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var equipmentCategory in Model)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td>@equipmentCategory.Name</td>
+                <td>
+                    <a class="btn btn-circle" asp-controller="Borrowed" asp-action="WriteOff" asp-route-id="@equipmentCategory.Id"
+                       aria-label="Otpis" title="Otpis" data-toggle="tooltip" data-placement="top"></a>
+                    <a onclick="showInPopup('@Url.Action("Edit","EquipmentCategory",new { id=equipmentCategory.Id },Context.Request.Scheme)','Dodaj kategoriju')"
+                       class="btn btn-circle"><i class="fa fa-pen-alt text-primary"></i></a>
+                    <form asp-action="Delete" asp-route-id="@equipmentCategory.Id" onsubmit="return jQueryAjaxDelete(this);" class="d-inline">
+                        <button type="submit" class="btn btn-circle"><i class="fa fa-trash-alt text-danger"></i></button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

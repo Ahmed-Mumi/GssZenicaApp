@@ -1,0 +1,31 @@
+﻿@model IEnumerable<GssZenicaApp.ViewModels.ListMembershipFeeCategoryViewModel>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tip članarine</th>
+            <th scope="col">Iznos članarine</th>
+            <th scope="col">
+                <a onclick="showInPopup('@Url.Action("Create","MembershipFeeCategory",null,Context.Request.Scheme)','Dodaj tip članarine')"
+                   class="btn btn-primary">Dodaj</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var membershipFeeCategory in Model)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td>@membershipFeeCategory.Name</td>
+                <td>@membershipFeeCategory.Amount KM</td>
+                <td>
+                    <a onclick="showInPopup('@Url.Action("Edit","MembershipFeeCategory",new { id=membershipFeeCategory.Id },Context.Request.Scheme)','Dodaj tip članarine')"
+                       class="btn btn-circle"><i class="fa fa-pen-alt text-primary"></i></a>
+                    <form asp-action="Delete" asp-route-id="@membershipFeeCategory.Id" onsubmit="return jQueryAjaxDelete(this);" class="d-inline">
+                        <button type="submit" class="btn btn-circle"><i class="fa fa-trash-alt text-danger"></i></button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

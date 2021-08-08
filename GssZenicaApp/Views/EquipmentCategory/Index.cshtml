@@ -1,0 +1,7 @@
+﻿@model IEnumerable<GssZenicaApp.ViewModels.ListEquipmentCategoryViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+<div id="view-AllEquipmentCategory">
+    @await Html.PartialAsync("_ViewAll", Model)
+</div>

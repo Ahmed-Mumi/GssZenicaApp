@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Edit Page";
+    Layout = null;
+}
+@model GssZenicaApp.ViewModels.EditMembershipFeeCategoryViewModel
+
+<form asp-action="Edit" asp-controller="MembershipFeeCategory" class="form-horizontal" onsubmit="return jQueryAjaxPost(this);"
+      asp-route-id="Id" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label>Naziv tipa članarine: </label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Iznos članarine</label>
+        <input asp-for="Amount" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Snimi" />
+    </div>
+</form>

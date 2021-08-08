@@ -1,0 +1,40 @@
+﻿@model IEnumerable<GssZenicaApp.ViewModels.ListEquipmentViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Naziv opreme</th>
+            <th scope="col">Cijena</th>
+            <th scope="col">Datum kupovine</th>
+            <th scope="col">Član kupio</th>
+            <th scope="col">
+                <a asp-action="Create" asp-controller="Equipment" class="btn btn-primary">Dodaj</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var equipment in Model)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td>@equipment.EquipmentCategoryName</td>
+                <td>@equipment.Price</td>
+                <td>@equipment.DateOfPurchase</td>
+                <td>@equipment.MemberPurchased</td>
+                <td>
+                    <a class="btn btn-circle" asp-controller="Equipment" asp-action="Edit" asp-route-id="@equipment.Id"
+                       aria-label="Uredi opremu" title="Uredi opremu" data-toggle="tooltip" data-placement="top">
+                        <i class="fa fa-pen-alt text-primary"></i>
+                    </a>
+                    <a class="btn btn-circle" asp-controller="Equipment" asp-action="Delete"
+                       asp-route-id="@equipment.Id" aria-label="Obriši opremu" title="Obriši opremu"
+                       data-toggle="tooltip" data-placement="top"><i class="fa fa-trash-alt text-danger"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

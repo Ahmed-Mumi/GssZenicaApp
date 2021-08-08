@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Uredi sposobnosti";
+
+}
+@model GssZenicaApp.ViewModels.EditSkillViewModel
+
+<form asp-controller="Skill" asp-action="Edit" class="form-horizontal" method="post">
+    <input type="hidden" asp-for="Id" />
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-5 control-label">Phtc/Itls: </label>
+                <div class="col-md-9">
+                    <input asp-for="PhtcItls" typeof="checkbox" class="form-control" id="header" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Helio: </label>
+                <div class="col-md-9">
+                    <input asp-for="Helio" typeof="checkbox" class="form-control" id="header" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Speleo: </label>
+                <div class="col-md-9">
+                    <input asp-for="Speleo" typeof="checkbox" class="form-control" id="header" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-5 control-label">Ljetni tečaj: </label>
+                <div class="col-md-9">
+                    <input asp-for="SummerCourse" typeof="checkbox" class="form-control" id="header" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Zimski tečaj: </label>
+                <div class="col-md-9">
+                    <input asp-for="WinterCourse" typeof="checkbox" class="form-control" id="header" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Medicinski tečaj: </label>
+                <div class="col-md-9">
+                    <input asp-for="MedicalCourse" typeof="checkbox" class="form-control" id="header" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Spasioc: </label>
+                <div class="col-md-9">
+                    <input asp-for="Rescurer" typeof="checkbox" class="form-control" id="header" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="col-md-5 control-label">Skijanje: </label>
+                <div class="col-md-9">
+                    <select asp-for="SkiingCategoryId" class="form-control" asp-items="@Model.SkiingCategoryList">
+                        <option value="" selected disabled>--  Odaberite kategoriju  --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Ronjenje: </label>
+                <div class="col-md-9">
+                    <select asp-for="DivingCategoryId" class="form-control" asp-items="@Model.DivingCategoryList">
+                        <option value="" selected disabled>--  Odaberite kategoriju  --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Vodič: </label>
+                <div class="col-md-9">
+                    <select asp-for="GuideCategoryId" class="form-control" asp-items="@Model.GuideCategoryList">
+                        <option value="" selected disabled>--  Odaberite kategoriju  --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">SAR: </label>
+                <div class="col-md-9">
+                    <select asp-for="SarCategoryId" class="form-control" asp-items="@Model.SarCategoryList">
+                        <option value="" selected disabled>--  Odaberite kategoriju  --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-success" value="Snimi" />
+            </div>
+        </div>
+    </div>
+</form>

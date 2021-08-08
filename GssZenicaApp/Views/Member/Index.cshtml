@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GssZenicaApp.ViewModels.ListMemberViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ime i prezime</th>
+            <th scope="col">Broj telefona</th>
+            <th scope="col">Krvna grupa</th>
+            <th scope="col">Broj prisustava</th>
+            <th scope="col">Dužnik</th>
+            <th scope="col">
+                <a asp-action="Create" asp-controller="Member" class="btn btn-primary">Dodaj</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td>@member.FullName</td>
+                <td>@member.PhoneNumber</td>
+                <td>@member.BloodTypeName</td>
+                <td>@member.PresenceCounter</td>
+                <td style="@(member.IsDebt ? "color:red" : "color:black")">@(member.IsDebt ? "Da" : "Ne")</td>
+                <td>
+                    <a class="btn btn-circle" asp-controller="Borrowed" asp-action="PrintBorrowed" asp-route-memberId="@member.Id"
+                       aria-label="Print" title="Print" data-toggle="tooltip" data-placement="top">
+                        <i class="fa fa-print text-success"></i>
+                    </a>
+                    <a class="btn btn-circle" asp-controller="Skill" asp-action="Edit" asp-route-id="@member.SkillId"
+                       aria-label="Dodaj sposobnost" title="Dodaj sposobnost" data-toggle="tooltip" data-placement="top">
+                        <i class="fa fa-certificate text-success"></i>
+                    </a>
+                    <a class="btn btn-circle" asp-controller="Member" asp-action="Edit" asp-route-id="@member.Id"
+                       aria-label="Uredi člana" title="Uredi člana" data-toggle="tooltip" data-placement="top">
+                        <i class="fa fa-pen-alt text-primary"></i>
+                    </a>
+                    <a class="btn btn-circle" asp-controller="Member" asp-action="Delete" asp-route-id="@member.Id"
+                       aria-label="Obriši člana" title="Obriši člana" data-toggle="tooltip" data-placement="top">
+                        <i class="fa fa-trash-alt text-danger"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

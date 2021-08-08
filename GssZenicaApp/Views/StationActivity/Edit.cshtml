@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Uredi aktivnost";
+
+}
+@model GssZenicaApp.ViewModels.EditStationActivityViewModel
+<h1 style="text-align:center">Uredi aktivnost</h1>
+<style>
+    input[type='checkbox'] {
+        -webkit-appearance: none;
+        width: 30px;
+        height: 30px;
+        background: white;
+        border-radius: 5px;
+        border: 2px solid #555;
+    }
+
+        input[type='checkbox']:checked {
+            background: #abd;
+        }
+
+    .checkboxMember {
+        column-count: 3;
+        column-gap: 30px;
+        list-style: none;
+    }
+</style>
+<style>
+    input[type='checkbox'] {
+        -webkit-appearance: none;
+        width: 30px;
+        height: 30px;
+        background: white;
+        border-radius: 5px;
+        border: 2px solid #555;
+    }
+
+        input[type='checkbox']:checked {
+            background: #abd;
+        }
+
+    .checkboxMember {
+        column-count: 3;
+        column-gap: 30px;
+        list-style: none;
+    }
+</style>
+<form asp-controller="StationActivity" asp-action="Edit" class="form-horizontal" method="post" autocomplete="off">
+    <input type="hidden" asp-for="Id" />
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+                <label class="col-md-11 control-label">Naziv aktivnosti: </label>
+                <div class="col-md-11">
+                    <input asp-for="Title" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-11 control-label">Datum održavanja: </label>
+                <div class="col-md-11">
+                    <input asp-for="DateOfActivity" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-11 control-label">Opis: </label>
+                <div class="col-md-11">
+                    <textarea asp-for="Note" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h1 style="text-align:center">Prisutni</h1>
+            <div class="row">
+                <div class="col-12">
+                    <ul class="checkboxMember">
+                        @for (int i = 0; i < Model.MemberList.Count; i++)
+                        {
+                            <li>
+                                <label>
+                                    <input type="checkbox" asp-for="@Model.MemberList[i].IsChecked" />
+                                    <span>@Model.MemberList[i].FullName</span>
+                                    <input type="hidden" asp-for="@Model.MemberList[i].Id" />
+                                    <input type="hidden" asp-for="@Model.MemberList[i].FullName" />
+                                </label>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-success" value="Snimi" />
+            </div>
+        </div>
+    </div>
+</form>

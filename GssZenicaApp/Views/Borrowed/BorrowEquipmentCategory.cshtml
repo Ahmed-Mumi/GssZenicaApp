@@ -1,0 +1,45 @@
+﻿@model GssZenicaApp.ViewModels.BorrowedViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="col-md-4">
+    <div class="form-group">
+        <label>Izaberi člana</label>
+        <select asp-for="MemberId" id="memberDropdown" class="form-control" asp-items="@Model.MemberList">
+            <option value="" selected disabled>--  Odaberite člana  --</option>
+        </select>
+    </div>
+</div>
+<div id="view-AllEquipmentCategory">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var equipmentCategory in Model.EquipmentCategoryList)
+            {
+                <tr>
+                    <th scope="row">1</th>
+                    <td>@equipmentCategory.Name</td>
+                    <td>
+                        <form asp-controller="Borrowed" asp-action="Create" method="post" class="container">
+                            <input name="equipmentCategoryId" type="hidden" value="@equipmentCategory.Id" />
+                            <input name="memberId" type="hidden" />
+                            <input name="quantity" type="number" size="4" max="@equipmentCategory.StockQuantity" min="1" />
+                            <button class="btn btn-circle" type="submit">
+                                <i class="fa fa-plus-circle text-primary"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GssZenicaApp.ViewModels.ListBorrowedViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Datum zaduženja</th>
+            <th scope="col">Datum za razduženje</th>
+            <th scope="col">Datum razduženja</th>
+            <th scope="col">Oprema</th>
+            <th scope="col">Član</th>
+            <th scope="col">Količina</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var borrow in Model)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td>@borrow.DateOfBorrow</td>
+                <td>@borrow.DateOfNecessaryReturn</td>
+                <td>@borrow.DateOfReturn</td>
+                <td>@borrow.EquipmentCategoryName</td>
+                <td>@borrow.MemberName</td>
+                <td>@borrow.Quantity</td>
+            </tr>
+        }
+    </tbody>
+</table>

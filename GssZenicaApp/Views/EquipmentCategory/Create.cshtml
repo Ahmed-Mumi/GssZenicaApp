@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Create Page";
+    Layout = null;
+}
+@model GssZenicaApp.ViewModels.AddEquipmentCategoryViewModel
+
+<form asp-action="Create" class="form-horizontal" asp-controller="EquipmentCategory" onsubmit="return jQueryAjaxPost(this);">
+    <input type="hidden" asp-for="IsFromEquipmentView" />
+    <div class="form-group">
+        <label>Naziv kategorije: </label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" value="Snimi" />
+    </div>
+</form>

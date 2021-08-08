@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Edit Page";
+}
+@model GssZenicaApp.ViewModels.AddMemberViewModel
+<form asp-controller="Member" asp-action="Create" class="form-horizontal" method="post">
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-5 control-label">Ime člana: </label>
+                <div class="col-md-9">
+                    <input asp-for="FirstName" class="form-control" id="header" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Prezime člana: </label>
+                <div class="col-md-9">
+                    <input asp-for="LastName" class="form-control" id="header" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Adresa: </label>
+                <div class="col-md-9">
+                    <input asp-for="Address" class="form-control" id="header" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Email: </label>
+                <div class="col-md-9">
+                    <input asp-for="Email" class="form-control" id="header" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Broj telefona: </label>
+                <div class="col-md-9">
+                    <input asp-for="PhoneNumber" class="form-control" id="header" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-5 control-label">Datum rođenja: </label>
+                <div class="col-md-9">
+                    <input asp-for="DateOfBirth" class="form-control" id="header" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Izaberi spol: </label>
+                <div class="col-md-9">
+                    <select asp-for="GenderId" class="form-control" asp-items="@Model.GenderList">
+                        <option value="" selected disabled>--  Odaberite spol  --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Izaberi krvnu grupu: </label>
+                <div class="col-md-9">
+                    <select asp-for="BloodTypeId" class="form-control" asp-items="@Model.BloodTypeList">
+                        <option value="" selected disabled>--  Odaberite krvnu grupu  --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Izaberi grad: </label>
+                <div class="col-md-9">
+                    <select asp-for="CityId" class="form-control" asp-items="@Model.CityList">
+                        <option value="" selected disabled>--  Odaberite grad  --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Izaberi poziciju: </label>
+                <div class="col-md-9">
+                    <select asp-for="MemberPositionId" class="form-control" asp-items="@Model.MemberPositionList">
+                        <option value="" selected disabled>--  Odaberite poziciju  --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-5 control-label">Izaberi tip: </label>
+                <div class="col-md-9">
+                    <select asp-for="MemberTypeId" class="form-control" asp-items="@Model.MemberTypeList">
+                        <option value="" selected disabled>--  Odaberite tip  --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-success" value="Snimi" />
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<GssZenicaApp.ViewModels.ListReportViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Izvjestaj podnio</th>
+            <th scope="col">Datum</th>
+            <th scope="col">Tekst</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var report in Model)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td>@report.MemberName</td>
+                <td>@report.DateOfReport</td>
+                <td>@report.Text</td>
+                <td>
+                    <a class="btn btn-circle" asp-controller="Report" asp-action="Delete" asp-route-ID="@report.Id" title="Obriši report" aria-label="Obriši report" data-toggle="tooltip" data-placement="top">Obriši report</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

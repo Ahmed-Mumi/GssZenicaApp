@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GssZenicaApp.ViewModels.ListStationActivityViewModel>
+
+@{
+    ViewBag.Title = "Aktivnosti";
+}
+<h1 style="text-align:center">Aktivnosti</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Naziv</th>
+            <th scope="col">Datum</th>
+            <th scope="col">
+                <a asp-action="Create" asp-controller="StationActivity" class="btn btn-primary">Dodaj</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stationActivity in Model)
+        {
+            <tr>
+                <td>@stationActivity.Title</td>
+                <td>@stationActivity.DateOfActivity</td>
+                <td>
+                    <a class="btn btn-circle" asp-controller="StationActivity" asp-action="Edit" asp-route-id="@stationActivity.Id"
+                       aria-label="Uredi aktivnost" title="Uredi aktivnost" data-toggle="tooltip" data-placement="top">
+                        <i class="fa fa-pen-alt text-success"></i>
+                    </a>
+                    @if (stationActivity.ReportId != 0 && stationActivity.ReportId != null)
+                    {
+                        <a class="btn btn-circle" asp-controller="Report" asp-action="Edit" asp-route-id="@stationActivity.ReportId"
+                           aria-label="Uredi izvještaj" title="Uredi izvještaj" data-toggle="tooltip" data-placement="top">
+                            <i class="fa fa-list-alt text-primary"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-circle" asp-controller="Report" asp-action="Create" asp-route-stationActivityId="@stationActivity.Id"
+                           aria-label="Dodaj izvještaj" title="Dodaj izvještaj" data-toggle="tooltip" data-placement="top">
+                            <i class="fa fa-list-alt text-primary"></i>
+                        </a>
+                    }
+                    <a class="btn btn-circle" asp-controller="StationActivity" asp-action="Delete" asp-route-id="@stationActivity.Id"
+                       aria-label="Obriši aktivnost" title="Obriši aktivnost" data-toggle="tooltip" data-placement="top">
+                        <i class="fa fa-trash-alt text-danger"></i>
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

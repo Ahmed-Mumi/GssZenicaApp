@@ -1,0 +1,8 @@
+﻿@model IEnumerable<GssZenicaApp.ViewModels.ListMembershipFeeViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div id="view-allFees">
+    @await Html.PartialAsync("_ViewAll", Model)
+</div>

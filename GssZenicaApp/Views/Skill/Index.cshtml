@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GssZenicaApp.ViewModels.ListSkillViewModel>
+
+@{
+    ViewBag.Title = "Sposobnosti";
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Član</th>
+                <th scope="col">Medicina</th>
+                <th scope="col">Ljetni tečaj</th>
+                <th scope="col">Zimski tečaj</th>
+                <th scope="col">Spasilac</th>
+                <th scope="col">PhtcItls</th>
+                <th scope="col">Helio</th>
+                <th scope="col">Speleo</th>
+                <th scope="col">Ronilac</th>
+                <th scope="col">Vodič</th>
+                <th scope="col">SAR</th>
+                <th scope="col">Skijaš</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var skill in Model)
+            {
+                <tr>
+                    <th scope="row">1</th>
+                    <td>@skill.MemberName</td>
+                    <td>@(skill.PhtcItls==true?"Da":"Ne")</td>
+                    <td>@(skill.Helio == true ? "Da" : "Ne")</td>
+                    <td>@(skill.Speleo == true ? "Da" : "Ne")</td>
+                    <td>@(skill.MedicalCourse == true ? "Da" : "Ne")</td>
+                    <td>@(skill.SummerCourse == true ? "Da" : "Ne")</td>
+                    <td>@(skill.WinterCourse == true ? "Da" : "Ne")</td>
+                    <td>@(skill.Rescurer == true ? "Da" : "Ne")</td>
+                    <td>@skill.DivingCategoryName</td>
+                    <td>@skill.GuideCategoryName</td>
+                    <td>@skill.SarCategoryName</td>
+                    <td>@skill.SkiingCategoryName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
