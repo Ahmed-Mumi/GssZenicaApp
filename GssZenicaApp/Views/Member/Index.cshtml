@@ -27,10 +27,21 @@
                 <td>@member.PresenceCounter</td>
                 <td style="@(member.IsDebt ? "color:red" : "color:black")">@(member.IsDebt ? "Da" : "Ne")</td>
                 <td>
-                    <a class="btn btn-circle" asp-controller="Borrowed" asp-action="PrintBorrowed" asp-route-memberId="@member.Id"
-                       aria-label="Print" title="Print" data-toggle="tooltip" data-placement="top">
-                        <i class="fa fa-print text-success"></i>
-                    </a>
+                    @if (member.HasBorrowedItems)
+                    {
+                        <a class="btn btn-circle" asp-controller="Borrowed" asp-action="PrintBorrowed" asp-route-memberId="@member.Id"
+                           aria-label="Print" title="Print" data-toggle="tooltip" data-placement="top">
+                            <i class="fa fa-print text-success"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-circle"
+                           aria-label="Nema zaduženja" title="Nema zaduženja" data-toggle="tooltip" data-placement="top">
+                            <i class="fa fa-print text-muted"></i>
+                        </a>
+                    }
+
                     <a class="btn btn-circle" asp-controller="Skill" asp-action="Edit" asp-route-id="@member.SkillId"
                        aria-label="Dodaj sposobnost" title="Dodaj sposobnost" data-toggle="tooltip" data-placement="top">
                         <i class="fa fa-certificate text-success"></i>

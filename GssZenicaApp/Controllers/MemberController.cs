@@ -25,6 +25,10 @@ namespace GssZenicaApp.Controllers
         {
             var members = await _unitOfWork.MemberRepository.GetAllMembers();
             var membersViewModel = _mapper.Map<IEnumerable<ListMemberViewModel>>(members);
+            foreach (var member in membersViewModel)
+            {
+                member.HasBorrowedItems = await _unitOfWork.BorrowedRepository.MemberHasBorrowed(member.Id);
+            }
             return View(membersViewModel);
         }
         [HttpGet]

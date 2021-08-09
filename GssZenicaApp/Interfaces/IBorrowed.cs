@@ -15,5 +15,6 @@ namespace GssZenicaApp.Interfaces
         Task<IEnumerable<Borrowed>> GetAllInactiveBorrows();
         Task<int> GetLastBorrowId();
         Task<IEnumerable<Borrowed>> GetMembersActiveBorrows(int memberId);
+        Task<bool> MemberHasBorrowed(int memberId);
     }
 }

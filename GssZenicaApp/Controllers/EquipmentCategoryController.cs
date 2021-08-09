@@ -110,7 +110,7 @@ namespace GssZenicaApp.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
-            _unitOfWork.EquipmentCategoryRepository.DeleteEquipmentCategory(id);
+            await _unitOfWork.EquipmentCategoryRepository.DeleteEquipmentCategory(id);
             await _unitOfWork.Complete();
             return Json(new
             {

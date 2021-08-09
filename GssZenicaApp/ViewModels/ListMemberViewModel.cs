@@ -12,5 +12,6 @@
         public bool IsDebt { get; set; }
         public int PresenceCounter { get; set; } = 0;
         public int SkillId { get; set; }
+        public bool HasBorrowedItems { get; set; }
     }
 }

@@ -35,6 +35,10 @@ namespace GssZenicaApp.Repositories
         {
             return await _context.Borrows.FirstOrDefaultAsync(x => x.Id == id);
         }
+        public async Task<bool> MemberHasBorrowed(int memberId)
+        {
+            return await _context.Borrows.FirstOrDefaultAsync(x => x.MemberId == memberId && x.IsActive) == null ? false : true;
+        }
 
         public async Task<IEnumerable<Borrowed>> GetAllBorrows()
         {

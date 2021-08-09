@@ -7,7 +7,7 @@ namespace GssZenicaApp.ViewModels
     {
         public IEnumerable<ListEquipmentCategoryViewModel> EquipmentCategoryList { get; set; }
         public SelectList MemberList { get; set; }
-        public int MemberId { get; set; }
+        public int? MemberId { get; set; }
         public int EquipmentId { get; set; }
     }
 }

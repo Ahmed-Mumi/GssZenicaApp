@@ -19,7 +19,10 @@
         {
             <tr>
                 <td>@stationActivity.Title</td>
-                <td>@stationActivity.DateOfActivity</td>
+                <td>
+                    @stationActivity.DateOfActivity.ToString("MM/dd/yyyy")
+                    @(stationActivity.DateOfActivityTo!=null ? " - "+stationActivity.DateOfActivityTo.Value.ToString("MM/dd/yyyy") : "")
+                </td>
                 <td>
                     <a class="btn btn-circle" asp-controller="StationActivity" asp-action="Edit" asp-route-id="@stationActivity.Id"
                        aria-label="Uredi aktivnost" title="Uredi aktivnost" data-toggle="tooltip" data-placement="top">

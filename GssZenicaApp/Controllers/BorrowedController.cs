@@ -61,13 +61,14 @@ namespace GssZenicaApp.Controllers
             _unitOfWork.StockRepository.UpdateStock(stock);
         }
         [HttpGet]
-        public async Task<IActionResult> GetEquipmentCategories()
+        public async Task<IActionResult> GetEquipmentCategories(int? memberId)
         {
             var equipmentCategories = await _unitOfWork.EquipmentCategoryRepository.GetAllEquipmentCategories();
             var equipmentCategoryViewModel = new BorrowedViewModel()
             {
                 EquipmentCategoryList = _mapper.Map<IEnumerable<ListEquipmentCategoryViewModel>>(equipmentCategories),
-                MemberList = new SelectList(await _unitOfWork.MemberRepository.GetAllMembers(), "Id", "FullName")
+                MemberList = new SelectList(await _unitOfWork.MemberRepository.GetAllMembers(), "Id", "FullName"),
+                MemberId = memberId != null ? memberId.Value : 0
             };
             return View("BorrowEquipmentCategory", equipmentCategoryViewModel);
         }
@@ -85,7 +86,7 @@ namespace GssZenicaApp.Controllers
                 await DecreaseLiveQuantityStock(equipmentCategoryId, quantity);
                 if (await _unitOfWork.Complete())
                 {
-                    return RedirectToAction("GetEquipmentCategories", "Borrowed");
+                    return RedirectToAction("GetEquipmentCategories", "Borrowed", new { memberId = memberId });
                 }
             }
             return RedirectToAction("Create");
@@ -113,7 +114,7 @@ namespace GssZenicaApp.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
-            _unitOfWork.BorrowedRepository.DeleteBorrow(id);
+            await _unitOfWork.BorrowedRepository.DeleteBorrow(id);
             await _unitOfWork.Complete();
             return RedirectToAction("Index");
         }
